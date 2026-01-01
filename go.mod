@@ -24,7 +24,6 @@ require (
 	github.com/metacubex/mlkem v0.1.0
 	github.com/metacubex/quic-go v0.57.1-0.20251217071004-e89f497a2e72
 	github.com/metacubex/randv2 v0.2.0
-	github.com/metacubex/restls-client-go v0.1.7
 	github.com/metacubex/sing v0.5.6
 	github.com/metacubex/sing-mux v0.3.4
 	github.com/metacubex/sing-shadowsocks v0.2.12
