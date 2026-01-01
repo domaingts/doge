@@ -100,13 +100,6 @@ func ParseListener(mapping map[string]any) (C.InboundListener, error) {
 			return nil, err
 		}
 		listener, err = IN.NewTrojan(trojanOption)
-	case "hysteria2":
-		hysteria2Option := &IN.Hysteria2Option{}
-		err = decoder.Decode(mapping, hysteria2Option)
-		if err != nil {
-			return nil, err
-		}
-		listener, err = IN.NewHysteria2(hysteria2Option)
 	case "tuic":
 		tuicOption := &IN.TuicOption{
 			MaxIdleTime:           15000,
@@ -120,20 +113,6 @@ func ParseListener(mapping map[string]any) (C.InboundListener, error) {
 			return nil, err
 		}
 		listener, err = IN.NewTuic(tuicOption)
-	case "anytls":
-		anytlsOption := &IN.AnyTLSOption{}
-		err = decoder.Decode(mapping, anytlsOption)
-		if err != nil {
-			return nil, err
-		}
-		listener, err = IN.NewAnyTLS(anytlsOption)
-	case "mieru":
-		mieruOption := &IN.MieruOption{}
-		err = decoder.Decode(mapping, mieruOption)
-		if err != nil {
-			return nil, err
-		}
-		listener, err = IN.NewMieru(mieruOption)
 	case "sudoku":
 		sudokuOption := &IN.SudokuOption{}
 		err = decoder.Decode(mapping, sudokuOption)
