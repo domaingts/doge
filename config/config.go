@@ -312,21 +312,6 @@ type RawTun struct {
 	SendMsgX bool `yaml:"sendmsgx" json:"sendmsgx,omitempty"`
 }
 
-type RawTuicServer struct {
-	Enable                bool              `yaml:"enable" json:"enable"`
-	Listen                string            `yaml:"listen" json:"listen"`
-	Token                 []string          `yaml:"token" json:"token"`
-	Users                 map[string]string `yaml:"users" json:"users,omitempty"`
-	Certificate           string            `yaml:"certificate" json:"certificate"`
-	PrivateKey            string            `yaml:"private-key" json:"private-key"`
-	CongestionController  string            `yaml:"congestion-controller" json:"congestion-controller,omitempty"`
-	MaxIdleTime           int               `yaml:"max-idle-time" json:"max-idle-time,omitempty"`
-	AuthenticationTimeout int               `yaml:"authentication-timeout" json:"authentication-timeout,omitempty"`
-	ALPN                  []string          `yaml:"alpn" json:"alpn,omitempty"`
-	MaxUdpRelayPacketSize int               `yaml:"max-udp-relay-packet-size" json:"max-udp-relay-packet-size,omitempty"`
-	CWND                  int               `yaml:"cwnd" json:"cwnd,omitempty"`
-}
-
 type RawIPTables struct {
 	Enable           bool     `yaml:"enable" json:"enable"`
 	InboundInterface string   `yaml:"inbound-interface" json:"inbound-interface"`
@@ -440,7 +425,6 @@ type RawConfig struct {
 	DNS           RawDNS                    `yaml:"dns" json:"dns"`
 	NTP           RawNTP                    `yaml:"ntp" json:"ntp"`
 	Tun           RawTun                    `yaml:"tun" json:"tun"`
-	TuicServer    RawTuicServer             `yaml:"tuic-server" json:"tuic-server"`
 	IPTables      RawIPTables               `yaml:"iptables" json:"iptables"`
 	Experimental  RawExperimental           `yaml:"experimental" json:"experimental"`
 	Profile       RawProfile                `yaml:"profile" json:"profile"`
@@ -532,19 +516,6 @@ func DefaultRawConfig() *RawConfig {
 			Inet6Address:        []netip.Prefix{netip.MustParsePrefix("fdfe:dcba:9876::1/126")},
 			RecvMsgX:            true,
 			SendMsgX:            false, // In the current implementation, if enabled, the kernel may freeze during multi-thread downloads, so it is disabled by default.
-		},
-		TuicServer: RawTuicServer{
-			Enable:                false,
-			Token:                 nil,
-			Users:                 nil,
-			Certificate:           "",
-			PrivateKey:            "",
-			Listen:                "",
-			CongestionController:  "",
-			MaxIdleTime:           15000,
-			AuthenticationTimeout: 1000,
-			ALPN:                  []string{"h3"},
-			MaxUdpRelayPacketSize: 1500,
 		},
 		IPTables: RawIPTables{
 			Enable:           false,

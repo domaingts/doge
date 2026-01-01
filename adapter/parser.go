@@ -82,20 +82,6 @@ func ParseProxy(mapping map[string]any, options ...ProxyOption) (C.Proxy, error)
 			break
 		}
 		proxy, err = outbound.NewTrojan(*trojanOption)
-	case "hysteria":
-		hyOption := &outbound.HysteriaOption{BasicOption: basicOption}
-		err = decoder.Decode(mapping, hyOption)
-		if err != nil {
-			break
-		}
-		proxy, err = outbound.NewHysteria(*hyOption)
-	case "hysteria2":
-		hyOption := &outbound.Hysteria2Option{BasicOption: basicOption}
-		err = decoder.Decode(mapping, hyOption)
-		if err != nil {
-			break
-		}
-		proxy, err = outbound.NewHysteria2(*hyOption)
 	case "wireguard":
 		wgOption := &outbound.WireGuardOption{BasicOption: basicOption}
 		err = decoder.Decode(mapping, wgOption)
@@ -103,13 +89,6 @@ func ParseProxy(mapping map[string]any, options ...ProxyOption) (C.Proxy, error)
 			break
 		}
 		proxy, err = outbound.NewWireGuard(*wgOption)
-	case "tuic":
-		tuicOption := &outbound.TuicOption{BasicOption: basicOption}
-		err = decoder.Decode(mapping, tuicOption)
-		if err != nil {
-			break
-		}
-		proxy, err = outbound.NewTuic(*tuicOption)
 	case "direct":
 		directOption := &outbound.DirectOption{BasicOption: basicOption}
 		err = decoder.Decode(mapping, directOption)
