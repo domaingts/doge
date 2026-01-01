@@ -50,7 +50,6 @@ require (
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mdlayher/netlink v1.7.2 // indirect
 	github.com/mdlayher/socket v0.4.1 // indirect
-	github.com/metacubex/amneziawg-go v0.0.0-20251104174305-5a0e9f7e361d // indirect
 	github.com/metacubex/ascon v0.1.0 // indirect
 	github.com/metacubex/bart v0.26.0 // indirect
 	github.com/metacubex/bbolt v0.0.0-20250725135710-010dbbbb7a5b // indirect
@@ -76,7 +75,6 @@ require (
 	github.com/metacubex/sing-shadowtls v0.0.0-20250503063515-5d9f966d17a2 // indirect
 	github.com/metacubex/sing-tun v0.4.11 // indirect
 	github.com/metacubex/sing-vmess v0.2.4 // indirect
-	github.com/metacubex/sing-wireguard v0.0.0-20250503063753-2dc62acc626f // indirect
 	github.com/metacubex/smux v0.0.0-20251111013112-03f8d12dafc1 // indirect
 	github.com/metacubex/tfo-go v0.0.0-20251130171125-413e892ac443 // indirect
 	github.com/metacubex/tls v0.1.0 // indirect

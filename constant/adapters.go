@@ -36,7 +36,6 @@ const (
 	Vmess
 	Vless
 	Trojan
-	WireGuard
 	Ssh
 	Sudoku
 )
@@ -188,8 +187,6 @@ func (at AdapterType) String() string {
 		return "Vless"
 	case Trojan:
 		return "Trojan"
-	case WireGuard:
-		return "WireGuard"
 	case Ssh:
 		return "Ssh"
 	case Sudoku:
