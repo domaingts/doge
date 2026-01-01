@@ -31,7 +31,6 @@ const (
 
 	Shadowsocks
 	ShadowsocksR
-	Snell
 	Socks5
 	Http
 	Vmess
@@ -39,8 +38,6 @@ const (
 	Trojan
 	WireGuard
 	Ssh
-	Mieru
-	AnyTLS
 	Sudoku
 )
 
@@ -181,8 +178,6 @@ func (at AdapterType) String() string {
 		return "Shadowsocks"
 	case ShadowsocksR:
 		return "ShadowsocksR"
-	case Snell:
-		return "Snell"
 	case Socks5:
 		return "Socks5"
 	case Http:
@@ -197,10 +192,6 @@ func (at AdapterType) String() string {
 		return "WireGuard"
 	case Ssh:
 		return "Ssh"
-	case Mieru:
-		return "Mieru"
-	case AnyTLS:
-		return "AnyTLS"
 	case Sudoku:
 		return "Sudoku"
 	case Relay:
