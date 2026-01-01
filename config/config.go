@@ -75,7 +75,6 @@ type Inbound struct {
 	TProxyPort        int            `json:"tproxy-port"`
 	MixedPort         int            `json:"mixed-port"`
 	Tun               LC.Tun         `json:"tun"`
-	TuicServer        LC.TuicServer  `json:"tuic-server"`
 	ShadowSocksConfig string         `json:"ss-config"`
 	VmessConfig       string         `json:"vmess-config"`
 	Authentication    []string       `json:"authentication"`
@@ -697,11 +696,6 @@ func ParseRawConfig(rawCfg *RawConfig) (*Config, error) {
 	config.DNS = dnsCfg
 
 	err = parseTun(rawCfg.Tun, dnsCfg, config.General)
-	if err != nil {
-		return nil, err
-	}
-
-	err = parseTuicServer(rawCfg.TuicServer, config.General)
 	if err != nil {
 		return nil, err
 	}
@@ -1616,24 +1610,6 @@ func parseTun(rawTun RawTun, dns *DNS, general *General) error {
 		SendMsgX: rawTun.SendMsgX,
 	}
 
-	return nil
-}
-
-func parseTuicServer(rawTuic RawTuicServer, general *General) error {
-	general.TuicServer = LC.TuicServer{
-		Enable:                rawTuic.Enable,
-		Listen:                rawTuic.Listen,
-		Token:                 rawTuic.Token,
-		Users:                 rawTuic.Users,
-		Certificate:           rawTuic.Certificate,
-		PrivateKey:            rawTuic.PrivateKey,
-		CongestionController:  rawTuic.CongestionController,
-		MaxIdleTime:           rawTuic.MaxIdleTime,
-		AuthenticationTimeout: rawTuic.AuthenticationTimeout,
-		ALPN:                  rawTuic.ALPN,
-		MaxUdpRelayPacketSize: rawTuic.MaxUdpRelayPacketSize,
-		CWND:                  rawTuic.CWND,
-	}
 	return nil
 }
 

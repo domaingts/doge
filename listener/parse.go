@@ -93,26 +93,6 @@ func ParseListener(mapping map[string]any) (C.InboundListener, error) {
 			return nil, err
 		}
 		listener, err = IN.NewVless(vlessOption)
-	case "trojan":
-		trojanOption := &IN.TrojanOption{}
-		err = decoder.Decode(mapping, trojanOption)
-		if err != nil {
-			return nil, err
-		}
-		listener, err = IN.NewTrojan(trojanOption)
-	case "tuic":
-		tuicOption := &IN.TuicOption{
-			MaxIdleTime:           15000,
-			AuthenticationTimeout: 1000,
-			ALPN:                  []string{"h3"},
-			MaxUdpRelayPacketSize: 1500,
-			CongestionController:  "bbr",
-		}
-		err = decoder.Decode(mapping, tuicOption)
-		if err != nil {
-			return nil, err
-		}
-		listener, err = IN.NewTuic(tuicOption)
 	case "sudoku":
 		sudokuOption := &IN.SudokuOption{}
 		err = decoder.Decode(mapping, sudokuOption)
